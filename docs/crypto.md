@@ -48,10 +48,8 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ## 3. Architecture Overview
 
 ### 3.1 Key Hierarchy
-
 ```mermaid
 graph LR
-%% --- node definitions ---
    MP["Master Password<br/>(User Input)"]:::source
    Salt["Salt<br/>(from Server)"]:::source
    RSK["Recovery Key (RSK)<br/>(Static Passphrase)"]:::source
@@ -64,21 +62,18 @@ graph LR
 
    Data["Sensitive Item Data"]:::data
 
-%% --- processes---
    Argon2id[["Argon2id KDF"]]:::op
    WrapP[["Wrap/Unwrap<br/>(AES-GCM)"]]:::op
    WrapR[["Wrap/Unwrap<br/>(AES-GCM)"]]:::op
    EncDEK[["Encrypt/Decrypt<br/>(AES-GCM)"]]:::op
    EncData[["Encrypt/Decrypt<br/>(AES-GCM)"]]:::op
 
-%% --- connections ---
    MP & Salt --> Argon2id --> MK
    MK --> WrapP --> USK
    RSK --> WrapR --> USK
    USK --> EncDEK --> DEK
    DEK --> EncData --> Data
 
-%% --- style ---
    classDef source fill:#fbc02d,color:#000,stroke:#f9a825,stroke-width:2px;
    classDef session fill:#3f51b5,color:#fff,stroke:#1a237e,stroke-width:2px;
    classDef root fill:#d32f2f,color:#fff,stroke:#b71c1c,stroke-width:3px;
@@ -89,6 +84,7 @@ graph LR
    linkStyle default stroke:#757575,stroke-width:1px;
    linkStyle 3,5 stroke:#d32f2f,stroke-width:2px;
 ```
+
 ---
 
 ### 3.2. Cryptographic Primitives
@@ -157,7 +153,8 @@ flowchart TD
     style S1 fill:#455a64,color:#fff,stroke:#26323
 ```
 
-**Registration Flow (MUST):**
+**Registration Flow:**
+
 1. User enters **Master Password**.
 2. Client derives **Master-Password-Derived Key (MK)** using Argon2id.
 3. Client generates Random 256-bit as **User Symmetric Key (USK)** (`enc_usk_password`).
@@ -167,14 +164,15 @@ flowchart TD
 7. Client encrypts the user's **asymmetric private key** using the USK (`enc_private_key`).
 8. Client displays the **Recovery Key (RSK)** to the user in a human-readable format (e.g. 32-character base58 or 4 groups of 8 characters) together with a QR code and a strong warning to store it securely offline.
 
-Server receives and stores:
+**Server receives and stores:**
+
 - `public_key` (plaintext)
 - `enc_usk_password` (encrypted by MK)
 - `enc_private_key` (encrypted by USK)
 - `enc_usk_recovery` (encrypted by Recovery Key (RSK))
 - `rsk_fingerprint` (RSK MUST be derived using Argon2id – used for verification)
 
-### 4.3 Normal Operation (Daily Use)
+### 4.1 Normal Operation (Daily Use)
 
 - User provides Master Password.
 - Client derives Master Key (MK) using Argon2id from Master Password.
@@ -202,7 +200,7 @@ sequenceDiagram
     C->>U: Render plaintext vault
 ```
 
-### 4.4 Recovery Flow (Forgotten Master Password)
+### 4.2 Recovery Flow (Forgotten Master Password)
 
 1. User provides the **Recovery Key (RSK)** (typed or scanned from QR).
 2. Client generates `rsk_fingerprint` and server verifies it.
@@ -237,7 +235,7 @@ sequenceDiagram
     S-->>C: 200 OK
 ```
 
-### 4.5 Database
+### 4.3 Database
 
 The following fields SHOULD be present at `users` table:
 
@@ -255,7 +253,7 @@ The following fields SHOULD be present at `users` table:
 | **rsk_fingerprint_salt** | `String` | No | Salt used to derive `rsk_fingerprint`                                               |
 | **rsk_created_at**      | `Timestamp` | No | Audit timestamp of when the recovery key was generated.                             |
 
-### 4.6 Security Considerations – Recovery Key (RSK)
+### 4.4 Security Considerations – Recovery Key (RSK)
 
 - The Recovery Key **MUST** be generated with a cryptographically secure random number generator.
 - The Recovery Key is **NEVER** sent to the server in plaintext.
@@ -269,7 +267,7 @@ The following fields SHOULD be present at `users` table:
 
 ## 5. Item Encryption (Create / Update)
 
-**Per-Item Encryption (REQUIRED):**
+**Per-Item Encryption:**
 
 1. Client generates fresh random **Item Key** (32 bytes).
 2. Client encrypts **all sensitive data** with Item Key using AES-256-GCM:
@@ -291,19 +289,7 @@ Server **NEVER** receives plaintext or Item Key in the clear.
 
 ## 6. Custom Fields and Metadata Encryption
 
-All custom fields **MUST** be encrypted exactly like the password:
-
-- Field `name` (e.g. `meta_is_breached`) → stored in plaintext (for UI filtering).
-- Field `value` → encrypted with the Item Key (AEAD).
-- Supported types: Text, Hidden, Boolean.
-
-**Recommended prefix convention:**
-- `meta_is_breached`
-- `meta_entropy`
-- `meta_semantic_category`
-- `meta_last_hibp_check`
-
----
+All custom fields **MUST** be located inside **Item Payload**.
 
 ## 7. Single-Item Sharing
 
@@ -344,31 +330,17 @@ sequenceDiagram
 
 ---
 
-## 8. Database Schema (Summary)
-
-See Section 10 of the companion document “SPM-ZKAI Database Schema” for full PostgreSQL schema with four schemas: `vault`, `security`, `audit`, `ai`.
-
-Key tables:
-- `vault.items` – `encrypted_item_key`, `encrypted_data`
-- `vault.item_custom_fields` – encrypted `value`
-- `security.breach_events`
-- `audit.audit_logs`
-- `ai.recommendations`
-
----
-
-## 9. Security Considerations
+## 8. Security Considerations
 
 - Server compromise yields only ciphertext.
 - Per-item keys limit blast radius.
 - AEAD prevents cut-and-paste attacks.
 - Asymmetric sharing prevents key reuse.
 - Audit log is immutable and tamper-evident.
-- All custom metadata (`is_breached`, `entropy`, etc.) is encrypted.
 
 ---
 
-## 10. References
+## 9. References
 
 - Bitwarden Security Whitepaper (2024)
 - RFC 8446 (TLS 1.3)
