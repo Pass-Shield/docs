@@ -1,0 +1,14 @@
+site_name: Passssshield
+site_url: https://pass-shield.github.io/docs/
+
+theme:
+  name: material
+  palette:
+    scheme: slate
+
+nav:
+  - Overview: index.md
+  - Cryptography: crypto.md
+  - Services:
+    - Audit:
+      - Use Cases: modules/audit/use-cases.md
