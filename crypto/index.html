@@ -1,0 +1,1461 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pass-shield.github.io/docs/crypto/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../modules/audit/use-cases/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Cryptography - Passssshield</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rfc-001-zero-knowledge-key-hierarchy-and-derivation-protocol" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Passssshield" class="md-header__button md-logo" aria-label="Passssshield" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Passssshield
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cryptography
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Passssshield" class="md-nav__button md-logo" aria-label="Passssshield" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Passssshield
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cryptography
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cryptography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-conventions-and-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Conventions and Terminology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Conventions and Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-cryptographic-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Cryptographic Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Architecture Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-key-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Key Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cryptographic-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Cryptographic Primitives
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-key-derivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Key Derivation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Key Derivation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-normal-operation-daily-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Normal Operation (Daily Use)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-recovery-flow-forgotten-master-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Recovery Flow (Forgotten Master Password)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-security-considerations-recovery-key-rsk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Security Considerations – Recovery Key (RSK)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-item-encryption-create-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Item Encryption (Create / Update)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-custom-fields-and-metadata-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Custom Fields and Metadata Encryption
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-single-item-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Single-Item Sharing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Security Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/audit/use-cases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Design Principles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-conventions-and-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Conventions and Terminology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Conventions and Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-cryptographic-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Cryptographic Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Architecture Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-key-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Key Hierarchy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cryptographic-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Cryptographic Primitives
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-key-derivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Key Derivation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Key Derivation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-normal-operation-daily-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Normal Operation (Daily Use)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-recovery-flow-forgotten-master-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Recovery Flow (Forgotten Master Password)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-security-considerations-recovery-key-rsk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Security Considerations – Recovery Key (RSK)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-item-encryption-create-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Item Encryption (Create / Update)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-custom-fields-and-metadata-encryption" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Custom Fields and Metadata Encryption
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-single-item-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Single-Item Sharing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Security Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rfc-001-zero-knowledge-key-hierarchy-and-derivation-protocol">[RFC-001] Zero-Knowledge Key Hierarchy and Derivation Protocol</h1>
+<hr />
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Metadata</th>
+<th style="text-align: left;">Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Document ID</strong></td>
+<td style="text-align: left;">PSHD-ZKA-01</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Status</strong></td>
+<td style="text-align: left;"><code>PROPOSED</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Authors</strong></td>
+<td style="text-align: left;">Patryk Krawczyk (@astrohack)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Created</strong></td>
+<td style="text-align: left;">2026-04-10</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Updated</strong></td>
+<td style="text-align: left;">2026-04-10</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Version</strong></td>
+<td style="text-align: left;">1.0.0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>This document specifies the cryptographic architecture, key management, and data model for a Zero-Knowledge (ZK) vault system. The protocol mandates client-side-only encryption using an <strong>Envelope Encryption</strong> and <strong>Key Wrapping</strong>. It enables secure password storage, metadata protection (<code>is_breached</code>, <code>entropy</code>, etc.), and account recovery without compromising the ZK principle.</p>
+<hr />
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="11-design-principles">1.1 Design Principles</h3>
+<ul>
+<li><strong>Zero-Knowledge:</strong> The server MUST NOT have access to the USK or any plaintext secrets.</li>
+<li><strong>Client-Side Derivation:</strong> All key derivation (KDF) MUST occur on the client.</li>
+<li><strong>Envelope Encryption:</strong> Each item is encrypted with a unique Data Encryption Key (DEK).</li>
+<li><strong>Recovery:</strong> Recovery keys MUST be independent of the Master Password.</li>
+</ul>
+<hr />
+<h2 id="2-conventions-and-terminology">2. Conventions and Terminology</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC 2119</a>.</p>
+<h3 id="21-cryptographic-definitions">2.1 Cryptographic Definitions</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Term</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Master Password</strong></td>
+<td style="text-align: left;">High-entropy user secret; the source of truth for daily access.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Master Key (MK)</strong></td>
+<td style="text-align: left;">Ephemeral 256-bit key derived via <strong>Argon2id</strong>. Used solely to wrap/unwrap the USK.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>User Symmetric Key (USK)</strong></td>
+<td style="text-align: left;">Permanent, random 256-bit root key. Acts as the <strong>Key Encrypting Key (KEK)</strong> for the entire vault.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Recovery Key (RSK)</strong></td>
+<td style="text-align: left;">Randomly generated 256-bit key, presented to the user as a mnemonic or Base32 string.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Item Key (DEK)</strong></td>
+<td style="text-align: left;">Random AES-256-GCM key unique to a single vault entry.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>AEAD</strong></td>
+<td style="text-align: left;">Authenticated Encryption with Associated Data, specifically <strong>AES-256-GCM</strong>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-architecture-overview">3. Architecture Overview</h2>
+<h3 id="31-key-hierarchy">3.1 Key Hierarchy</h3>
+<pre class="mermaid"><code>graph LR
+   MP["Master Password&lt;br/&gt;(User Input)"]:::source
+   Salt["Salt&lt;br/&gt;(from Server)"]:::source
+   RSK["Recovery Key (RSK)&lt;br/&gt;(Static Passphrase)"]:::source
+
+   MK[["Master Key (MK)&lt;br/&gt;(Ephemeral Session Key)"]]:::session
+
+   USK(("USER SYMMETRIC KEY (USK)&lt;br/&gt;(Static Root KEK)")):::root
+
+   DEK[["Item Key (DEK)&lt;br/&gt;(Per-item AES Key)"]]:::dek
+
+   Data["Sensitive Item Data"]:::data
+
+   Argon2id[["Argon2id KDF"]]:::op
+   WrapP[["Wrap/Unwrap&lt;br/&gt;(AES-GCM)"]]:::op
+   WrapR[["Wrap/Unwrap&lt;br/&gt;(AES-GCM)"]]:::op
+   EncDEK[["Encrypt/Decrypt&lt;br/&gt;(AES-GCM)"]]:::op
+   EncData[["Encrypt/Decrypt&lt;br/&gt;(AES-GCM)"]]:::op
+
+   MP &amp; Salt --&gt; Argon2id --&gt; MK
+   MK --&gt; WrapP --&gt; USK
+   RSK --&gt; WrapR --&gt; USK
+   USK --&gt; EncDEK --&gt; DEK
+   DEK --&gt; EncData --&gt; Data
+
+   classDef source fill:#fbc02d,color:#000,stroke:#f9a825,stroke-width:2px;
+   classDef session fill:#3f51b5,color:#fff,stroke:#1a237e,stroke-width:2px;
+   classDef root fill:#d32f2f,color:#fff,stroke:#b71c1c,stroke-width:3px;
+   classDef dek fill:#388e3c,color:#fff,stroke:#1b5e20,stroke-width:2px;
+   classDef data fill:#616161,color:#fff,stroke:#424242;
+   classDef op fill:none,stroke:#9e9e9e,stroke-dasharray: 5 5,color:#757575;
+
+   linkStyle default stroke:#757575,stroke-width:1px;
+   linkStyle 3,5 stroke:#d32f2f,stroke-width:2px;</code></pre>
+<hr />
+<h3 id="32-cryptographic-primitives">3.2. Cryptographic Primitives</h3>
+<p>All implementations MUST use:</p>
+<table>
+<thead>
+<tr>
+<th>Primitive</th>
+<th>Algorithm</th>
+<th>Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key Derivation</td>
+<td>Argon2id</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Symmetric Encryption</td>
+<td>AES-256-GCM</td>
+<td>96-bit nonce, 128-bit tag</td>
+</tr>
+<tr>
+<td>Asymmetric Keys</td>
+<td>X25519 (preferred) or RSA-2048</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Hashing</td>
+<td>SHA-256 / SHA-512</td>
+<td>–</td>
+</tr>
+<tr>
+<td>MAC / Integrity</td>
+<td>Included in AEAD</td>
+<td>–</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-key-derivation">4. Key Derivation</h2>
+<pre class="mermaid"><code>flowchart TD
+    subgraph CLIENT ["CLIENT (Frontend)"]
+        direction TB
+
+        subgraph S_KEYS ["1. Access Sources"]
+            MP["Master Password&lt;br/&gt;(User Input)"]
+            RSK["Recovery Key (RSK)&lt;br/&gt;(Generated once, 32 chars)"]
+        end
+
+        subgraph S_DERIVATION ["2. Derivation &amp; Generation"]
+            MP --&gt;|Argon2id| PW_K["Password-Derived Key&lt;br/&gt;(Ephemeral Session Key)"]
+            USK_RAW["USER SYMMETRIC KEY (USK)&lt;br/&gt;(Static, Random 256-bit)"]
+        end
+
+        subgraph S_WRAPPING ["3. Key Wrapping"]
+            PW_K --&gt;|AES-256-GCM| WRAP_P["Wrapped USK (by Password)"]
+            RSK --&gt;|AES-256-GCM| WRAP_R["Wrapped USK (by RSK)"]
+        end
+
+        subgraph S_DATA ["4. Data Encryption"]
+            USK_RAW --&gt;|Encrypts| ITEM_K["Item Key (DEK)"]
+            ITEM_K --&gt;|Encrypts| PAYLOAD["Item Payload (AES-GCM)"]
+        end
+    end
+
+%% Data Flow
+    WRAP_R --&gt;|HTTPS POST| SRV_AUTH
+    WRAP_P --&gt;|HTTPS POST| SRV_AUTH
+    ITEM_K --&gt;|HTTPS POST| SRV_VAULT
+    PAYLOAD --&gt;|HTTPS POST| SRV_VAULT
+
+    subgraph SERVER ["SERVER (Encrypted Storage)"]
+        direction TB
+        subgraph SRV_AUTH ["Auth Service / DB"]
+            S2["blob: Encrypted USK (RSK)"]
+            S1["blob: Encrypted USK (Pass)"]
+        end
+        subgraph SRV_VAULT ["Vault Service / DB"]
+            S3["blob: Encrypted Item Keys"]
+            S4["blob: Encrypted Items"]
+        end
+    end
+
+%% Theme-Aware Styling (Contrast optimized for Dark/Light)
+    style MP fill:#303f9f,color:#fff,stroke:#1a237e
+    style RSK fill:#fbc02d,color:#000,stroke:#f9a825
+    style USK_RAW fill:#d32f2f,color:#fff,stroke:#b71c1c,stroke-width:3px
+    style S1 fill:#455a64,color:#fff,stroke:#26323</code></pre>
+<p><strong>Registration Flow:</strong></p>
+<ol>
+<li>User enters <strong>Master Password</strong>.</li>
+<li>Client derives <strong>Master-Password-Derived Key (MK)</strong> using Argon2id.</li>
+<li>Client generates Random 256-bit as <strong>User Symmetric Key (USK)</strong> (<code>enc_usk_password</code>).</li>
+<li>Client generates <strong>asymmetric key pair (private_key + <code>public_key</code>)</strong>.</li>
+<li>Client generates a cryptographically secure random <strong>Recovery Symmetric Key (RSK)</strong> – 32 bytes (256 bits).</li>
+<li>Client encrypts the <strong>USK</strong> using the <strong>RSK</strong> (AES-256-GCM) (<code>enc_usk_recovery</code>).</li>
+<li>Client encrypts the user's <strong>asymmetric private key</strong> using the USK (<code>enc_private_key</code>).</li>
+<li>Client displays the <strong>Recovery Key (RSK)</strong> to the user in a human-readable format (e.g. 32-character base58 or 4 groups of 8 characters) together with a QR code and a strong warning to store it securely offline.</li>
+</ol>
+<p><strong>Server receives and stores:</strong></p>
+<ul>
+<li><code>public_key</code> (plaintext)</li>
+<li><code>enc_usk_password</code> (encrypted by MK)</li>
+<li><code>enc_private_key</code> (encrypted by USK)</li>
+<li><code>enc_usk_recovery</code> (encrypted by Recovery Key (RSK))</li>
+<li><code>rsk_fingerprint</code> (RSK MUST be derived using Argon2id – used for verification)</li>
+</ul>
+<h3 id="41-normal-operation-daily-use">4.1 Normal Operation (Daily Use)</h3>
+<ul>
+<li>User provides Master Password.</li>
+<li>Client derives Master Key (MK) using Argon2id from Master Password.</li>
+<li>Client use MK to decrypt wrapped USK.</li>
+<li>USK is used to decrypt all <code>encrypted_item_key</code> values.</li>
+<li>All subsequent operations (decrypting items, custom fields including <code>meta_is_breached</code>, <code>meta_entropy</code>, <code>meta_semantic_category</code>) proceed as defined in Section 5.</li>
+</ul>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as User
+    participant C as Client App
+    participant S as Vault Server
+
+    U-&gt;&gt;C: Provide Master Password
+    C-&gt;&gt;S: GET /auth/keys
+    S--&gt;&gt;C: enc_usk_password
+
+    Note over C: Derive MK via Argon2id&lt;br/&gt;Decrypt USK using MK
+
+    C-&gt;&gt;S: GET /vault/items
+    S--&gt;&gt;C: encrypted_items, encrypted_item_keys
+
+    Note over C: For each vault item:&lt;br/&gt;1. Decrypt DEK using USK&lt;br/&gt;2. Decrypt item payload using DEK
+
+    C-&gt;&gt;U: Render plaintext vault</code></pre>
+<h3 id="42-recovery-flow-forgotten-master-password">4.2 Recovery Flow (Forgotten Master Password)</h3>
+<ol>
+<li>User provides the <strong>Recovery Key (RSK)</strong> (typed or scanned from QR).</li>
+<li>Client generates <code>rsk_fingerprint</code> and server verifies it.</li>
+<li>Client decrypts <code>enc_usk_recovery</code> using the provided RSK → obtains original USK.</li>
+<li>With the recovered USK, client can decrypt all Item Keys and the entire vault content.</li>
+<li>User is prompted to set a <strong>new Master Password</strong>.</li>
+<li>Client derives a new USK from the new <strong>MK</strong>.</li>
+<li>Client re-encrypts the old USK with the new USK.</li>
+<li>(Optional but recommended) Client generates a <strong>new Recovery Key (RSK)</strong>, encrypts the new USK with it, and asks the user to store the new key.</li>
+</ol>
+<p>After successful recovery, the old <code>enc_usk_recovery</code> may be replaced with a new one.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as User
+    participant C as Client App
+    participant S as Vault Server
+
+    U-&gt;&gt;C: Provide Recovery Key (RSK)
+    C-&gt;&gt;S: POST /auth/recovery/init
+    Note right of C: Payload: rsk_fingerprint
+    S--&gt;&gt;C: enc_usk_recovery
+
+    Note over C: Decrypt USK using RSK
+
+    U-&gt;&gt;C: Provide New Master Password
+
+    Note over C: Derive new MK via Argon2id&lt;br/&gt;Encrypt recovered USK with new MK
+
+    C-&gt;&gt;S: POST /auth/keys/update
+    Note right of C: Payload: new enc_usk_password
+    S--&gt;&gt;C: 200 OK</code></pre>
+<h3 id="43-database">4.3 Database</h3>
+<p>The following fields SHOULD be present at <code>users</code> table:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Column</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Nullable</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>id</strong></td>
+<td style="text-align: left;"><code>UUID</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Primary key. Unique identifier for the user.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>email</strong></td>
+<td style="text-align: left;"><code>String</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Unique user identifier for authentication.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>kdf_salt</strong></td>
+<td style="text-align: left;"><code>String</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Cryptographic salt used for Argon2id key derivation.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>kdf_params</strong></td>
+<td style="text-align: left;"><code>JSONB</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Configuration for KDF (iterations, memory, parallelism).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>enc_usk_password</strong></td>
+<td style="text-align: left;"><code>Blob/Text</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;"><strong>USK</strong> wrapped by the Password-Derived Key (AES-256-GCM).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>enc_usk_recovery</strong></td>
+<td style="text-align: left;"><code>Blob/Text</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;"><strong>USK</strong> wrapped by the <strong>Recovery Key (RSK)</strong> (AES-256-GCM).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>public_key</strong></td>
+<td style="text-align: left;"><code>Text</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">User's public asymmetric key (RSA-2048 or X25519) in Base64.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>enc_private_key</strong></td>
+<td style="text-align: left;"><code>Blob/Text</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">User's private asymmetric key, <strong>encrypted by USK</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>rsk_fingerprint</strong></td>
+<td style="text-align: left;"><code>String</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">RSK derived using Argon2Id for verification without storage.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>rsk_fingerprint_salt</strong></td>
+<td style="text-align: left;"><code>String</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Salt used to derive <code>rsk_fingerprint</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>rsk_created_at</strong></td>
+<td style="text-align: left;"><code>Timestamp</code></td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Audit timestamp of when the recovery key was generated.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-security-considerations-recovery-key-rsk">4.4 Security Considerations – Recovery Key (RSK)</h3>
+<ul>
+<li>The Recovery Key <strong>MUST</strong> be generated with a cryptographically secure random number generator.</li>
+<li>The Recovery Key is <strong>NEVER</strong> sent to the server in plaintext.</li>
+<li>The server stores only the encrypted wrapper and a non-reversible fingerprint (derived using Argon2Id with salt).</li>
+<li>Users <strong>MUST</strong> be strongly warned to store the Recovery Key in a safe, offline location (e.g. printed Emergency Kit, password manager backup, physical safe).</li>
+<li>After using the Recovery Key, it is <strong>RECOMMENDED</strong> to generate and store a new one (key rotation).</li>
+<li>Compromise of the Recovery Key alone does not grant access without the encrypted vault data.</li>
+</ul>
+<hr />
+<h2 id="5-item-encryption-create-update">5. Item Encryption (Create / Update)</h2>
+<p><strong>Per-Item Encryption:</strong></p>
+<ol>
+<li>Client generates fresh random <strong>Item Key</strong> (32 bytes).</li>
+<li>Client encrypts <strong>all sensitive data</strong> with Item Key using AES-256-GCM:<ul>
+<li>login</li>
+<li>password</li>
+<li>notes</li>
+<li><strong>all custom field values</strong> (<code>meta_is_breached</code>, <code>meta_entropy</code>, <code>meta_semantic_category</code>, etc.)</li>
+</ul>
+</li>
+<li>Client includes <strong>Associated Data (AD)</strong> in AEAD:<ul>
+<li><code>item_id|user_id|field_name|revision_timestamp</code></li>
+</ul>
+</li>
+<li>Client encrypts the Item Key itself with USK → <code>encrypted_item_key</code>.</li>
+<li>Client sends to Vault Service only:<ul>
+<li><code>encrypted_item_key</code></li>
+<li><code>encrypted_data</code></li>
+<li>plaintext structural metadata (<code>folder_id</code>, <code>is_favorite</code>, timestamps)</li>
+</ul>
+</li>
+</ol>
+<p>Server <strong>NEVER</strong> receives plaintext or Item Key in the clear.</p>
+<hr />
+<h2 id="6-custom-fields-and-metadata-encryption">6. Custom Fields and Metadata Encryption</h2>
+<p>All custom fields <strong>MUST</strong> be located inside <strong>Item Payload</strong>.</p>
+<h2 id="7-single-item-sharing">7. Single-Item Sharing</h2>
+<p><strong>Sharing Protocol (MUST implement):</strong></p>
+<ol>
+<li>Owner (A) requests sharing with user B.</li>
+<li>Client A:<ul>
+<li>Decrypts Item Key locally using own USK.</li>
+<li>Fetches B’s <code>public_key</code>.</li>
+<li>Re-encrypts the <strong>same Item Key</strong> with B’s public key (asymmetric).</li>
+</ul>
+</li>
+<li>Server stores additional record: e.g. <code>shared_item_key_for_b</code> (encrypted with B’s public key).</li>
+<li>User B:<ul>
+<li>Decrypts shared Item Key with own private key (decrypted by B’s USK).</li>
+<li>Decrypts item data normally.</li>
+</ul>
+</li>
+</ol>
+<p>No re-encryption of the entire item is required.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant A as Client A (Owner)
+    participant S as Vault Server
+    participant B as Client B (Recipient)
+
+    A-&gt;&gt;S: GET /users/{B_id}/public-key
+    S--&gt;&gt;A: public_key_B
+
+    Note over A: 1. Decrypt DEK using USK_A&lt;br/&gt;2. Encrypt DEK using public_key_B
+
+    A-&gt;&gt;S: POST /vault/items/{item_id}/share
+    Note right of A: Payload:&lt;br/&gt;- target_user_id: B_id&lt;br/&gt;- encrypted_dek_for_B
+    S--&gt;&gt;A: 200 OK
+
+    B-&gt;&gt;S: GET /vault/items/{item_id}
+    S--&gt;&gt;B: encrypted_payload, encrypted_dek_for_B, enc_private_key
+
+    Note over B: 1. Decrypt Private Key using USK_B&lt;br/&gt;2. Decrypt DEK using Private Key&lt;br/&gt;3. Decrypt payload using DEK</code></pre>
+<hr />
+<h2 id="8-security-considerations">8. Security Considerations</h2>
+<ul>
+<li>Server compromise yields only ciphertext.</li>
+<li>Per-item keys limit blast radius.</li>
+<li>AEAD prevents cut-and-paste attacks.</li>
+<li>Asymmetric sharing prevents key reuse.</li>
+<li>Audit log is immutable and tamper-evident.</li>
+</ul>
+<hr />
+<h2 id="9-references">9. References</h2>
+<ul>
+<li>Bitwarden Security Whitepaper (2024)</li>
+<li>RFC 8446 (TLS 1.3)</li>
+<li>RFC 5869 (HKDF)</li>
+<li>Argon2 Specification (RFC 9106)</li>
+<li>NIST SP 800-63B</li>
+</ul>
+<hr />
+<p><strong>Appendix A – Example JSON Item Structure (after client encryption)</strong></p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;encrypted_item_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.aes256-gcm|...|...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;encrypted_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.aes256-gcm|...|...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;folder_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;custom_fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;meta_is_breached&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.aes256-gcm|...|...&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<strong>Appendix B – Recovery Key Display Example</strong>
+<div class="highlight"><pre><span></span><code>Your Recovery Key (store this safely!):
+
+X7K9-P4M2-Q8V6-L3N1-R9T5-B2H7-J4W8-F6G3
+
+This key allows full vault recovery if you forget your Master Password.
+It will NOT be shown again.
+</code></pre></div></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

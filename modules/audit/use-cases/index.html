@@ -1,0 +1,1803 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pass-shield.github.io/docs/modules/audit/use-cases/">
+      
+      
+        <link rel="prev" href="../../../crypto/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Use Cases - Passssshield</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rfc-003-security-audit-and-ai-advisor-protocol-specification" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Passssshield" class="md-header__button md-logo" aria-label="Passssshield" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Passssshield
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Use Cases
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Passssshield" class="md-nav__button md-logo" aria-label="Passssshield" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Passssshield
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../crypto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cryptography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Services
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Services
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Audit
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Audit
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Motivation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-conventions-and-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Conventions and Terminology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Conventions and Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Glossary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cryptographic-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cryptographic Primitives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-protocol-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Protocol Flows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Protocol Flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-kldp-k-anonymity-leak-detection-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 KLDP - K-Anonymity Leak Detection Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-bddp-blind-indexing-duplicate-detection-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 BDDP - Blind-Indexing Duplicate Detection Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-spsp-security-posture-scoring-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 SPSP - Security Posture Scoring Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-flow-04-pasa-private-ai-security-advisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 FLOW-04 PASA - Private AI Security Advisor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-sbbp-service-level-breach-broadcasting-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 SBBP - Service-level Breach Broadcasting Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-asbr-ai-semantic-blast-radius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 ASBR - AI Semantic Blast Radius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-barp-behavioral-ai-risk-persona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 BARP - Behavioral AI Risk Persona
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-teal-tamper-evident-audit-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 TEAL - Tamper-Evident Audit Logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-tpgp-themed-passphrase-generation-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 TPGP - Themed Passphrase Generation Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-data-model-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Data Model Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Data Model Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-entity-relationship-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Entity Relationship Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-operational-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Operational Interfaces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Operational Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-event-driven-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Event-Driven Synchronization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 Event-Driven Synchronization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#711-nats-connector-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.1 NATS Connector Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#712-tamper-evident-audit-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.2 Tamper-Evident Audit Events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event structure:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-example-metadata-embedded-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional example metadata embedded fields:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-resilience-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Resilience Controls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Security Considerations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-zero-knowledge-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Zero-Knowledge Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-probability-of-false-positives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Probability of False Positives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-prompt-injection-mitigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Prompt Injection Mitigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-example-advisory-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix A: Example Advisory JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Motivation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-conventions-and-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Conventions and Terminology
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Conventions and Terminology">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Glossary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cryptographic-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cryptographic Primitives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Architecture Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-protocol-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Protocol Flows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Protocol Flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-kldp-k-anonymity-leak-detection-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 KLDP - K-Anonymity Leak Detection Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-bddp-blind-indexing-duplicate-detection-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 BDDP - Blind-Indexing Duplicate Detection Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-spsp-security-posture-scoring-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 SPSP - Security Posture Scoring Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-flow-04-pasa-private-ai-security-advisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 FLOW-04 PASA - Private AI Security Advisor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-sbbp-service-level-breach-broadcasting-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 SBBP - Service-level Breach Broadcasting Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-asbr-ai-semantic-blast-radius" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 ASBR - AI Semantic Blast Radius
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-barp-behavioral-ai-risk-persona" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 BARP - Behavioral AI Risk Persona
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-teal-tamper-evident-audit-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 TEAL - Tamper-Evident Audit Logging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-tpgp-themed-passphrase-generation-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 TPGP - Themed Passphrase Generation Protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-data-model-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Data Model Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Data Model Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-entity-relationship-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Entity Relationship Diagram
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-operational-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Operational Interfaces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Operational Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-event-driven-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Event-Driven Synchronization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.1 Event-Driven Synchronization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#711-nats-connector-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.1 NATS Connector Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#712-tamper-evident-audit-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1.2 Tamper-Evident Audit Events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Event structure:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-example-metadata-embedded-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional example metadata embedded fields:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-resilience-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Resilience Controls
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Security Considerations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-zero-knowledge-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Zero-Knowledge Integrity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-probability-of-false-positives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Probability of False Positives
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-prompt-injection-mitigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Prompt Injection Mitigation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-example-advisory-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix A: Example Advisory JSON
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="rfc-003-security-audit-and-ai-advisor-protocol-specification">[RFC-003] Security Audit and AI Advisor Protocol Specification</h1>
+<hr />
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Metadata</th>
+<th style="text-align: left;">Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Doc ID</strong></td>
+<td style="text-align: left;">PSHD-SEC-03</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Status</strong></td>
+<td style="text-align: left;"><code>PROPOSED</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Authors</strong></td>
+<td style="text-align: left;">Patryk Krawczyk (@astrohack)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Created</strong></td>
+<td style="text-align: left;">2026-04-10</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Updated</strong></td>
+<td style="text-align: left;">2026-04-11</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Version</strong></td>
+<td style="text-align: left;">1.0.0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="11-motivation">1.1 Motivation</h3>
+<p>Modern password management requires proactive security analysis to combat credential stuffing and service-level breaches. However, traditional auditing systems often compromise user privacy by transmitting vault metadata to central servers or third-party Large Language Models (LLMs). This document provides a framework for performing high-fidelity security audits and AI-driven recommendations while maintaining complete end-to-end encryption.</p>
+<h3 id="12-scope">1.2 Scope</h3>
+<p>This specification covers the interaction between the client application, the Auditor microservice, and external providers for breach detection and semantic analysis. It includes the definition of anonymized data structures, k-anonymity lookup patterns, and deterministic blind indexing.</p>
+<hr />
+<h2 id="2-conventions-and-terminology">2. Conventions and Terminology</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC 2119</a>.</p>
+<h3 id="21-glossary">2.1 Glossary</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Acronym</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>ZKA</strong></td>
+<td style="text-align: left;">Zero-Knowledge Architecture</td>
+<td style="text-align: left;">A design principle where the server possesses zero access to plaintext user secrets or cryptographic materials capable of decrypting them.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>USK</strong></td>
+<td style="text-align: left;">User Symmetric Key</td>
+<td style="text-align: left;">The root AES-256 key derived on the client from the Master Password, used as the primary Key Encrypting Key (KEK).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>KLDP</strong></td>
+<td style="text-align: left;">K-Anonymity Leak Detection Protocol</td>
+<td style="text-align: left;">A mechanism for querying breached credential databases without revealing the target hash.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>BDDP</strong></td>
+<td style="text-align: left;">Blind-Indexing Duplicate Detection Protocol</td>
+<td style="text-align: left;">A technique for identifying identical records across encrypted datasets using keyed hashes.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>SBBP</strong></td>
+<td style="text-align: left;">Service-level Breach Broadcasting Protocol</td>
+<td style="text-align: left;">A probabilistic method for notifying users of platform-wide compromises using Bloom filters.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TPGP</strong></td>
+<td style="text-align: left;">Themed Passphrase Generation Protocol</td>
+<td style="text-align: left;">A flow for generating high-entropy passphrases based on semantic keyword expansion.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>DEK</strong></td>
+<td style="text-align: left;">Data Encryption Key</td>
+<td style="text-align: left;">A unique, per-item symmetric key used to encrypt individual vault records.</td>
+</tr>
+<tr>
+<td style="text-align: left;">---</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-cryptographic-primitives">3. Cryptographic Primitives</h2>
+<p>All implementations of the protocols defined in this document MUST adhere to the following primitive specifications:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Primitive</th>
+<th style="text-align: left;">Algorithm</th>
+<th style="text-align: left;">Parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Symmetric Encryption</strong></td>
+<td style="text-align: left;">AES-256-GCM</td>
+<td style="text-align: left;">96-bit nonce, 128-bit tag</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Keyed Hashing (MAC)</strong></td>
+<td style="text-align: left;">HMAC-SHA256</td>
+<td style="text-align: left;">256-bit key (USSP)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cryptographic Hashing</strong></td>
+<td style="text-align: left;">SHA-256</td>
+<td style="text-align: left;">Standard 32-byte output</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>K-Anonymity Hashing</strong></td>
+<td style="text-align: left;">SHA-1</td>
+<td style="text-align: left;">First 5 hexadecimal characters used as prefix</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Probabilistic Filters</strong></td>
+<td style="text-align: left;">Bloom Filter</td>
+<td style="text-align: left;">Configured for &lt; 0.1% False Positive Rate</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-architecture-overview">4. Architecture Overview</h2>
+<p>The system architecture utilizes a Hexagonal pattern to decouple core logic from external intelligence feeds. All communication between the client and the Auditor service MUST be authenticated and encrypted via TLS 1.3.</p>
+<pre class="mermaid"><code>graph TD
+    subgraph "Client Domain (Cleartext Context)"
+        C["Client Application (Vault Memory)"]
+    end
+
+    subgraph "Infrastructure Domain (Anonymized Context)"
+        S["Auditor Service"]
+        DB[("Audit Persistence (Postgres)")]
+        MQ["Event Bus (Kafka)"]
+        LLM[("LLM Provider (Local Ollama)")]
+    end
+
+    subgraph "External API"
+        HIBP[("HIBP API (K-Anonymity)")]
+    end
+
+    C -- "Global Score (Aggregate)" --&gt; S
+    C -- "Ephemeral Context Packet" --&gt; S
+    C -- "SHA-1 Prefix (5-chars)" --&gt; S
+
+    S -- "Monitored Prefixes" --&gt; DB
+    S -- "Aggregate Metrics" --&gt; DB
+    S -- "Score Alerts" --&gt; MQ
+
+    S -- "Prefix Sync" --&gt; HIBP
+    S -- "Hardened Prompt" --&gt; LLM</code></pre>
+<hr />
+<h2 id="5-protocol-flows">5. Protocol Flows</h2>
+<h3 id="51-kldp-k-anonymity-leak-detection-protocol">5.1 KLDP - K-Anonymity Leak Detection Protocol</h3>
+<p>Facilitates secure credential exposure verification without leaking plaintext passwords or full hashes to the server.</p>
+<ol>
+<li>Client computes the SHA-1 hash of the plaintext password.</li>
+<li>Client extracts the first 5 hexadecimal characters as the <code>k_anonymity_prefix</code>.</li>
+<li>Client transmits the prefix to the Auditor service to request a suffix update.</li>
+<li>Auditor service checks the <code>monitored_prefix</code> global cache for existing entries.</li>
+<li>If the cache is stale or missing, the Auditor service fetches the full list of suffixes from the external HIBP provider and updates the global cache.</li>
+<li>Auditor service returns the list of suffixes to the Client without persisting the relationship between the prefix and the specific User or Record.</li>
+<li>Client performs a local binary search for the remaining 35 characters of its SHA-1 hash within the returned suffix list.</li>
+<li>If a match is discovered, the Client updates the encrypted <code>meta_is_breached</code> custom field within its own vault record.</li>
+</ol>
+<h3 id="52-bddp-blind-indexing-duplicate-detection-protocol">5.2 BDDP - Blind-Indexing Duplicate Detection Protocol</h3>
+<p>Identifies identical passwords across the vault locally to prevent server-side leakage of password relationships.</p>
+<ol>
+<li>Client scans its decrypted vault items locally.</li>
+<li>Client identifies items sharing identical plaintext passwords.</li>
+<li>Client calculates its own <code>uniqueness_ratio</code> based on these local matches.</li>
+<li>Client updates its own encrypted <code>meta_uniqueness</code> metadata fields.</li>
+<li>The infrastructure layer (Auditor Service) SHALL NOT receive or store any keyed hashes or indexing tokens that would enable cross-record correlation.</li>
+</ol>
+<h3 id="53-spsp-security-posture-scoring-protocol">5.3 SPSP - Security Posture Scoring Protocol</h3>
+<p>Quantifies the overall cryptographic health of a vault by aggregating weighted risk signals locally.</p>
+<ol>
+<li>Client aggregates metrics from its decrypted vault items (e.g., entropy, breach status, uniqueness).</li>
+<li>Client applies a weighted formula to calculate the <code>global_score</code> (0-100).</li>
+<li>Client transmits the final <code>global_score</code> (and optional anonymized aggregate statistics) to the Auditor service.</li>
+<li>Auditor service persists the <code>global_score</code> in the <code>user_audit_profile</code> table for display and history tracking.</li>
+<li>The raw metrics for individual items MUST NOT be shared with or stored on the server.</li>
+</ol>
+<h3 id="54-flow-04-pasa-private-ai-security-advisor">5.4 FLOW-04 PASA - Private AI Security Advisor</h3>
+<p>Generates context-aware security remediation advice using local LLM execution on sanitized, ephemeral metadata packets.</p>
+<ol>
+<li>Client generates a sanitized JSON context packet containing non-identifiable metrics (e.g., entropy=2, is_breached=true, category="Finance") for a specific item.</li>
+<li>Client strips all record IDs and PII before transmission.</li>
+<li>Client transmits the ephemeral context packet to the Auditor service as a one-time recommendation request.</li>
+<li>Server enforces length boundaries (<code>MAX_BYTES=256</code>) on semantic fields to prevent prompt expansion attacks.</li>
+<li>Server injects the sanitized context into a hardened prompt template and routes it to the local LLM.</li>
+<li>Server returns the <code>AdvisoryReport</code> JSON object to the Client and immediately purges the context packet from memory.</li>
+</ol>
+<p>AI Advisor <strong>MUST NOT</strong> ever receive plaintext passwords.</p>
+<p><strong>Allowed data flow:</strong>
+- Client decrypts only necessary metadata locally.
+- Client sends <strong>anonymized metadata</strong> to AI Service:
+  - <code>entropy</code>, <code>is_breached</code>, <code>semanticCategory</code>, <code>reused</code>, <code>length</code>, <code>last_changed</code>
+- AI Service returns recommendations (JSON).</p>
+<p>AI may run locally (Ollama) or remotely (Groq/Llama) – both variants are compliant.</p>
+<hr />
+<h3 id="55-sbbp-service-level-breach-broadcasting-protocol">5.5 SBBP - Service-level Breach Broadcasting Protocol</h3>
+<p>Notifies users of service-level platform compromises via probabilistic filters to minimize domain metadata leakage.</p>
+<ol>
+<li>Auditor service maintains a global repository of compromised service domains.</li>
+<li>Auditor service generates a Bloom filter representing the set of compromised domains.</li>
+<li>Client fetches the latest Bloom filter during the synchronization phase.</li>
+<li>Client checks its local decrypted list of domains against the Bloom filter.</li>
+<li>If a hit occurs, the Client performs a secondary validation against a specific exact-match endpoint or local list to eliminate false positives.</li>
+<li>Client notifies the user if a service-level hazard is confirmed.</li>
+</ol>
+<h3 id="56-asbr-ai-semantic-blast-radius">5.6 ASBR - AI Semantic Blast Radius</h3>
+<p>Identifies cascading vulnerabilities by mapping dependencies between high-impact "Hub" accounts and dependent "Spoke" services.</p>
+<ol>
+<li>LLM identifies "Hub" accounts (e.g., primary email providers) based on record semantic categories.</li>
+<li>LLM maps dependencies between items (e.g., services using the primary email for recovery).</li>
+<li>If a "Hub" account is detected as breached, the system elevates the risk status for all dependent "Spoke" accounts.</li>
+<li>The system prioritizes recovery and rotation instructions in the <code>AdvisoryReport</code> based on this propagated risk.</li>
+</ol>
+<h3 id="57-barp-behavioral-ai-risk-persona">5.7 BARP - Behavioral AI Risk Persona</h3>
+<p>Optimizes the urgency and tone of security advisories by measuring the latency between hazard detection and user resolution.</p>
+<ol>
+<li>Auditor service tracks the delta between the timestamp of a detected hazard and the timestamp of vault remediation.</li>
+<li>Auditor service computes the <code>RemediationLatency</code> statistics for the user.</li>
+<li>System assigns a risk persona based on latency (e.g., "Proactive", "Reactive", or "Negligent").</li>
+<li>LLM adjusts the tone of the generated advice (EDUCATIONAL, DIRECTIVE, or URGENT) based on the assigned persona to mitigate alert fatigue.</li>
+</ol>
+<h3 id="58-teal-tamper-evident-audit-logging">5.8 TEAL - Tamper-Evident Audit Logging</h3>
+<p>Ensures non-repudiation and traceability of all cross-service actions via a cryptographically linked chain of records.</p>
+<ol>
+<li>Microservices (e.g., Vault, IAM) publish state-change events (<code>CREATE</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>SHARE</code>, <code>VIEW_ITEM</code>) to the NATS message broker (<code>audit.events.*</code> subject).</li>
+<li>Events MUST include a <code>X-Trace-Id</code> header to track the entire request chain across services. This is critical for forensic debugging.</li>
+<li>The Auditor service consumes the event and fetches the <code>current_hash</code> of the latest audit log record (using a zeroed hash for the genesis record).</li>
+<li>The service computes a new SHA-256 hash using the <code>previous_hash</code> concatenated with the new event attributes.</li>
+<li>The Auditor persists the event alongside the <code>previous_hash</code> and <code>current_hash</code>, establishing a tamper-evident, verifiable log.</li>
+</ol>
+<h3 id="59-tpgp-themed-passphrase-generation-protocol">5.9 TPGP - Themed Passphrase Generation Protocol</h3>
+<p>Enables the generation of high-entropy, memorable passphrases based on user-defined semantic themes using LLM keyword expansion.</p>
+<ol>
+<li><strong>Client Request</strong>: User provides a semantic theme (e.g., "Deep Sea", "Sci-Fi", "Ancient Rome") via the Client.</li>
+<li><strong>Theme Transmission</strong>: Client transmits the theme string to the Auditor service.</li>
+<li><strong>LLM Expansion</strong>: Auditor service routes the theme to the local LLM with a directive to generate a set of $N$ (default $N=12$) distinct, relevant keywords.</li>
+<li><strong>Keyword Return</strong>: Auditor service returns the raw list of keywords to the Client and purges the request from memory.</li>
+<li><strong>Local Composition</strong>: Client randomly selects a subset of keywords (e.g., 3-4) from the received set.</li>
+<li><strong>Passphrase Assembly</strong>: Client joins the selected keywords using a secure separator (e.g., <code>-</code> or <code>_</code>) and presents the final passphrase to the user.</li>
+</ol>
+<p><strong>Security Constraints:</strong>
+- The Auditor service <strong>MUST NOT</strong> participate in the selection or assembly of the final passphrase to prevent pre-computation or brute-force optimization attacks.
+- LLM response MUST be sanitized to ensure only alphanumeric keywords are returned.</p>
+<hr />
+<h2 id="6-data-model-specification">6. Data Model Specification</h2>
+<h3 id="61-entity-relationship-diagram">6.1 Entity Relationship Diagram</h3>
+<p>The Auditor service MUST persist metrics in a PostgreSQL relational database according to the following entity relationship model. This model ensures that no individual record metrics or plaintext metadata are stored on the server.</p>
+<pre class="mermaid"><code>erDiagram
+    "user_audit_profile" {
+        UUID user_id PK "Primary key / Reference to IAM"
+        SMALLINT global_score "Normalized 0-100 (Aggregate)"
+        TIMESTAMP updated_at "Last score calculation time"
+    }
+
+    "monitored_prefix" {
+        CHAR(5) prefix PK "SHA-1 Hash prefix identifier"
+        VARCHAR etag "HTTP ETag for HIBP delta-sync"
+        TIMESTAMP last_synced_at "Last polling timestamp"
+    }
+
+    "audit_log_records" {
+        BIGINT id PK "Sequential ID"
+        VARCHAR action "Action type (create, update, delete, share, view)"
+        VARCHAR trace_id "Distributed trace ID"
+        VARCHAR actor_id "User or service principal"
+        VARCHAR resource_id "Affected resource"
+        VARCHAR resource_type "Category or type of target resource"
+        JSON metadata "Payload for additional data"
+        VARCHAR previous_hash "SHA-256 hash of previous record"
+        VARCHAR current_hash "SHA-256 hash of current record"
+        TIMESTAMP timestamp "Event occurrence time"
+        TIMESTAMP created_at "Record creation timestamp"
+    }</code></pre>
+<hr />
+<h2 id="7-operational-interfaces">7. Operational Interfaces</h2>
+<h3 id="71-event-driven-synchronization">7.1 Event-Driven Synchronization</h3>
+<p>Inter-service communication SHALL follow the CloudEvents specification for asynchronous updates.</p>
+<ol>
+<li><strong>com.passshield.vault.item.mutated</strong>: Triggered when a vault entry is created or updated, prompting a re-audit.</li>
+<li><strong>com.passshield.iam.mfa.updated</strong>: Triggered when a user's MFA status changes, affecting the <code>global_score</code>.</li>
+<li><strong>com.passshield.audit.score.critical</strong>: Emitted when a user's security posture falls below a predefined threshold (e.g., &lt; 30).</li>
+</ol>
+<h4 id="711-nats-connector-architecture">7.1.1 NATS Connector Architecture</h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant NATS as NATS JetStream
+    participant Manager as NatsConnectionManager
+    participant Adapter as NatsAuditConsumerAdapter
+    participant Service as AuditService
+
+    Manager-&gt;&gt;NATS: Connect with Auth (audit:audit)
+    Manager-&gt;&gt;NATS: Ensure Stream (AUDIT_STREAM)
+    Manager--&gt;&gt;Adapter: NatsReadyEvent
+    Adapter-&gt;&gt;NATS: Pull Subscribe (Durable: audit-service-consumer)
+    loop Continuous Pull
+        Adapter-&gt;&gt;NATS: fetch(batch=10, wait=1s)
+        NATS--&gt;&gt;Adapter: List&lt;Message&gt;
+        loop For each message
+            Adapter-&gt;&gt;Service: handle(event)
+            Adapter-&gt;&gt;NATS: msg.ack()
+        end
+    end</code></pre>
+<h4 id="712-tamper-evident-audit-events">7.1.2 Tamper-Evident Audit Events</h4>
+<p>The Auditor service consumes the following events from the <code>audit.events.*</code> NATS subject to construct the immutable log:</p>
+<ul>
+<li><strong>audit.events.create</strong>: Emitted when a new resource is created (e.g., vault item, folder, IAM identity).</li>
+<li><strong>audit.events.update</strong>: Emitted when an existing resource's metadata or ciphertext is modified.</li>
+<li><strong>audit.events.delete</strong>: Emitted when a resource is permanently deleted.</li>
+<li><strong>audit.events.share</strong>: Emitted when a vault item or folder is shared with another entity.</li>
+<li><strong>audit.events.view</strong>: Emitted when a highly sensitive resource is decrypted and accessed.</li>
+<li><strong>audit.events.raw</strong>: Custom events for any other audit purposes, as long as they include required fields and <code>metadata</code>.</li>
+</ul>
+<h4 id="event-structure">Event structure:</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>eventId</code></td>
+<td style="text-align: left;">UUID</td>
+<td style="text-align: left;">Unique identifier for the event.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>version</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Schema version of the event payload (currently "1.0").</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tenantId</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Tenant ID for multi-tenancy data isolation. (currently not supported)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>actorId</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">ID of the user or system component performing the action.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>action</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The operation performed, ideally in a <code>namespace.verb</code> format (e.g., <code>secret.create</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>status</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Outcome of the event (e.g., <code>SUCCESS</code>, <code>FAILURE</code>, <code>DENIED</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>resourceId</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Unique identifier of the target resource being accessed or modified.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>resourceType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Category or type of the target resource (e.g., <code>secret</code>, <code>vault</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>timestamp</code></td>
+<td style="text-align: left;">Long</td>
+<td style="text-align: left;">Event occurrence time in Unix Epoch milliseconds.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>traceId</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">OTEL trace ID. (optional)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>metadata</code></td>
+<td style="text-align: left;">JSON Object</td>
+<td style="text-align: left;">Payload for additional data.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="optional-example-metadata-embedded-fields">Optional example metadata embedded fields:</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ip</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The IP address of the client that initiated the request.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>userAgent</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The full User-Agent string of the client browser or application.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>clientType</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The type of client app used (e.g., <code>web</code>, <code>mobile</code>, <code>extension</code>, <code>desktop</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>failureReason</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Error code or machine-readable reason if status is <code>FAILURE</code> or <code>DENIED</code> (e.g., <code>invalid_mfa</code>, <code>expired_session</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-resilience-controls">7.2 Resilience Controls</h3>
+<ol>
+<li><strong>Circuit Breakers</strong>: External integrations (HIBP, LLM) MUST trigger an open state if the error rate exceeds 20% over a rolling 30-second window.</li>
+<li><strong>Rate Limiting</strong>: The system SHALL enforce a limit of 100 requests per second (RPS) per user to prevent resource exhaustion.</li>
+</ol>
+<hr />
+<h2 id="8-security-considerations">8. Security Considerations</h2>
+<h3 id="81-zero-knowledge-integrity">8.1 Zero-Knowledge Integrity</h3>
+<p>The Auditor service SHALL NOT receive plaintext passwords, encrypted vault records, or deterministic metadata (e.g., Blind Indexes). All analysis MUST be conducted locally by the Client. The infrastructure layer handles only:
+1. Global hash prefix data for HIBP synchronization.
+2. Ephemeral, non-identifiable context packets for AI recommendations (purged after response).
+3. Final aggregate health scores.</p>
+<h3 id="82-probability-of-false-positives">8.2 Probability of False Positives</h3>
+<p>The SBBP utilizes Bloom filters which inherently support false positives. Clients MUST implement defensive checks to ensure users are not prompted to rotate passwords for services that were not actually breached.</p>
+<h3 id="83-prompt-injection-mitigation">8.3 Prompt Injection Mitigation</h3>
+<p>Inputs to the PASA module MUST be validated against a whitelist of expected semantic categories. User-provided strings MUST be escaped and truncated to prevent adversarial influence over the LLM's directive output.</p>
+<hr />
+<h2 id="9-references">9. References</h2>
+<ol>
+<li>RFC 2119: Key words for use in RFCs to Indicate Requirement Levels.</li>
+<li>RFC 8174: Ambiguity of Uppercase vs Lowercase in RFC 2119.</li>
+<li>NIST SP 800-63B: Digital Identity Guidelines.</li>
+<li>Argon2 Password Hashing Competition (KDF Specification).</li>
+</ol>
+<hr />
+<h2 id="appendix-a-example-advisory-json">Appendix A: Example Advisory JSON</h2>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;u-12345&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;global_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;advisories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CRITICAL&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BREACH&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;record_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;r-67890&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Security hazard detected: Your &#39;Finance&#39; login was found in a recent leak. Immediate rotation is required.&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HIGH&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;REUSE&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Six records share an identical password. This increases the cascading risk of your vault.&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;persona&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;REACTIVE&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
